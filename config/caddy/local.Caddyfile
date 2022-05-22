@@ -1,0 +1,11 @@
+http://{$APP_HOST_PREFIX:local-}hashflags.viomck.com:{$APP_HOST_PORT:8081}
+
+handle /api/hashflags/* {
+        # https://pbs.twimg.com/hashflag/config-2022-05-22-15.json
+        rewrite * /hashflag/config-{http.request.uri.path.file}.json
+        reverse_proxy https://pbs.twimg.com {
+                header_up Host {http.reverse_proxy.upstream.host}
+        }
+}
+
+reverse_proxy :3000
