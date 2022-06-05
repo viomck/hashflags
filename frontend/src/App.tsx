@@ -91,7 +91,7 @@ function App() {
 }
 
 function pad(n: number): string {
-    if (n > 10) return n.toString();
+    if (n >= 10) return n.toString();
     return "0" + n.toString();
 }
 
