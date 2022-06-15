@@ -37,7 +37,15 @@ function App() {
                 });
 
                 console.log(hashflagsByCampaign);
-                setHashflagsByCampaign(hashflagsByCampaign);
+
+                // Sort map by campaign name
+                setHashflagsByCampaign(
+                    new Map(
+                        [...hashflagsByCampaign].sort((a, b) =>
+                            String(a[0]).localeCompare(b[0])
+                        )
+                    )
+                );
             });
     }, []);
 
